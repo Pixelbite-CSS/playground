@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>New | PixelbiteCSS Playground</title>
+    <link rel="stylesheet" href="https://pixelbite-css.github.io/pixelbite-css/index.css">
+</head>
+<body class="bg-black3 c-white">
+    <div class="w-100% h-100vh flexColumn">
+        <div class="flexRow flexSpaceBetween flexMiddle flexCenter w-100% p-0-36px bg-black5 bbottom-1px-solid-black7">
+            <div class="flexRow g-32px">        
+                <div class="flex flexRow g-12px pointer fw-600" onclick="toggleElement('popup-exit')">
+                    <img src="../assets/logo.svg" height="24"/>
+                </div>
+                <div class="flexRow foreach:td-none zIndex-9">
+                    <div class="dropdown">
+                        <a href="#" class="c-white p-16px dropdown-button">File</a>
+                        <div class="dropdown-content flexColumn flexLeft br-0 mt-40px">
+                            <a href="#">Hello</a>
+                            <a href="#">Hello</a>
+                            <a href="#">Hello</a>
+                            <a href="#">Hello</a>
+                        </div>
+                    </div>
+                    <a href="https://pixelbite-css.github.io/docs" target="_blank" class="c-white p-16px">Documentation</a>
+                </div>
+            </div>
+            <div class="flexRow g-32px">
+                <button>Exit</button>
+            </div>
+        </div>
+        <div class="h-100% w-100% flexRow flexLeft flexNowrap">
+            <div class="p-24px-4px flexColumn flexTop flexCenter flexMiddle fs-22px pt-24px bg-black7 h-100% foreach:td-none">
+                <a href="#" class="hidden flex w-75px h-50px flexCenter c-black60 toggle-menuPreview" onclick="toggleElement('toggle-menuPreview')"><i class="fa-solid fa-desktop"></i></a>
+                <a href="#" class="w-75px h-50px flexCenter toggle-menuPreview" onclick="toggleElement('toggle-menuPreview')"><i class="fa-solid fa-desktop"></i></a>
+                <a href="#" class="hidden flex w-75px h-50px flexCenter c-black60 toggle-menuFolder" onclick="toggleElement('toggle-menuFolder')"><i class="fa-solid fa-folder"></i></a>
+                <a href="#" class="w-75px h-50px flexCenter toggle-menuFolder" onclick="toggleElement('toggle-menuFolder')"><i class="fa-solid fa-folder"></i></a>
+                <a href="#" class="hidden flex w-75px h-50px flexCenter c-black60 toggle-menuEditor" onclick="toggleElement('toggle-menuEditor')"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="#" class="w-75px h-50px flexCenter toggle-menuEditor" onclick="toggleElement('toggle-menuEditor')"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="#" class="hidden flex w-75px h-50px flexCenter c-black60 toggle-menuCode" onclick="toggleElement('toggle-menuCode')"><i class="fa-solid fa-hard-drive"></i></a>
+                <a href="#" class="w-75px h-50px flexCenter toggle-menuCode" onclick="toggleElement('toggle-menuCode')"><i class="fa-solid fa-hard-drive"></i></a>
+                <a href="#" class="flex w-75px h-50px flexCenter c-black60"><i class="fa-solid fa-floppy-disk"></i></a>
+                <a href="#" class="flex w-75px h-50px flexCenter c-black60"><i class="fa-solid fa-gear"></i></a>
+            </div>
+            <div class="toggle-menuPreview flexColumn bright-1px-solid-black7 h-100% w-100%">
+                <div class="flexRow flexSpaceBetween p-6px-12px fs-12px g-128px bbottom-1px-solid-black7 bg-black5 w-100%">
+                    <span>Preview</span>
+                    <span onclick="toggleElement('toggle-menuPreview')" class="pointer"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+            </div>
+            <div class="toggle-menuFolder flexColumn bright-1px-solid-black7 h-100% w-100%">
+                <div class="flexRow flexSpaceBetween p-6px-12px fs-12px g-128px bbottom-1px-solid-black7 bg-black5 w-100%">
+                    <span>Folder</span>
+                    <span onclick="toggleElement('toggle-menuFolder')" class="pointer"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+            </div>
+            <div class="toggle-menuEditor flexColumn bright-1px-solid-black7 h-100% w-100%">
+                <div class="flexRow flexSpaceBetween p-6px-12px fs-12px g-128px bbottom-1px-solid-black7 bg-black5 w-100%">
+                    <span>Editor</span>
+                    <span onclick="toggleElement('toggle-menuEditor')" class="pointer"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+            </div>
+            <div class="toggle-menuCode flexColumn bright-1px-solid-black7 h-100% w-100%">
+                <div class="flexRow flexSpaceBetween p-6px-12px fs-12px g-128px bbottom-1px-solid-black7 bg-black5 w-100%">
+                    <span>Code Editor</span>
+                    <span onclick="toggleElement('toggle-menuCode')" class="pointer"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup-exit hidden pos-absolute top-0 left-0 zIndex-9 w-100% h-100vh bg-rgba(0,0,0,.6) flexCenter flexMiddle">
+        <div class="b-1px-solid-black10 br-8px bg-black3">
+            <div class="p-18px-24px flexRow flexCenter flexMiddle w-400px g-24px flexWrap-nowrap">
+                <div class="c-warning fs-42px mt-4px">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div class="w-100%">
+                    <div class="fs-16px fw-600">Warning</div>
+                    <div class="fs-14px">Do you want to exit without saving?</div>
+                </div>
+            </div>
+            <div class="b-1px-solid-black10"></div>
+            <div class="ta-right p-18px">
+                <button class="h-32px p-0-18px br-50px" onclick="toggleElement('popup-exit')">Cancel</button>
+                <button class="h-32px p-0-18px br-50px" onclick="href('./..')">Continue</button>
+            </div>
+        </div>
+    </div>
+    <div class="loader loader-page flexCenter flexMiddle">
+        <div class="loader-line"></div>
+    </div>
+    <script src="../pixelbite.js"></script>
+</body>
+</html>
