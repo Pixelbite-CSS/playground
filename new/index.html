@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>New | PixelbiteCSS Playground</title>
     <link rel="stylesheet" href="https://pixelbite-css.github.io/pixelbite-css/index.css">
+    <link rel="stylesheet" href="../playground.css">
 </head>
 <body class="bg-black3 c-white">
-    <div class="w-100% h-100vh flexColumn">
+    <div class="w-100% h-100vh flexColumn max1080:d-flex min1200:d-none">
         <div class="flexRow flexSpaceBetween flexMiddle flexCenter w-100% p-0-36px bg-black5 bbottom-1px-solid-black7">
             <div class="flexRow g-32px">        
                 <div class="flex flexRow g-12px pointer fw-600" onclick="toggleElement('popup-exit')">
@@ -16,55 +17,105 @@
                 <div class="flexRow foreach:td-none zIndex-9">
                     <div class="dropdown">
                         <a href="#" class="c-white p-16px dropdown-button">File</a>
-                        <div class="dropdown-content flexColumn flexLeft br-0 mt-40px">
-                            <a href="#">Hello</a>
-                            <a href="#">Hello</a>
-                            <a href="#">Hello</a>
-                            <a href="#">Hello</a>
+                        <div class="dropdown-content hidden flexColumn flexLeft br-0 bg-black7 left-_1px p-6px-14px b-1px-solid-primary w-200px g-4px br-0-8px-8px-8px mt-15px">
+                            <button onclick="href('#')" class="flex flexSpaceBetween w-100% p-4px-0 bg-transparent buttonDarkHover">
+                                <div>New file</div>
+                            </button>
+                            <button onclick="href('#')" class="flex flexSpaceBetween w-100% p-4px-0 bg-transparent buttonDarkHover">
+                                <div>Export file</div><i class="fa-solid fa-file-export"></i>
+                            </button>
+                            <button onclick="href('#')" class="flex flexSpaceBetween w-100% p-4px-0 bg-transparent buttonDarkHover">
+                                <div>Import file</div><i class="fa-solid fa-file-import pr-5px"></i>
+                            </button>
+                            <button onclick="href('#')" class="flex flexSpaceBetween w-100% p-4px-0 bg-transparent buttonDarkHover">
+                                <div>Delete file</div><i class="fa-solid fa-trash pr-4px"></i>
+                            </button>
                         </div>
                     </div>
+                    <a href="#" class="c-white p-16px">Settings</a>
                     <a href="https://pixelbite-css.github.io/docs" target="_blank" class="c-white p-16px">Documentation</a>
                 </div>
             </div>
             <div class="flexRow g-32px">
-                <button>Exit</button>
+                <button onclick="href('https://pixelbite-css.github.io', true)">Visit PixelbiteCSS</button>
             </div>
         </div>
         <div class="h-100% w-100% flexRow flexLeft flexNowrap">
             <div class="p-24px-4px flexColumn flexTop flexCenter flexMiddle fs-22px pt-24px bg-black7 h-100% foreach:td-none">
-                <a href="#" class="hidden flex w-75px h-50px flexCenter c-black60 toggle-menuPreview" onclick="toggleElement('toggle-menuPreview')"><i class="fa-solid fa-desktop"></i></a>
-                <a href="#" class="w-75px h-50px flexCenter toggle-menuPreview" onclick="toggleElement('toggle-menuPreview')"><i class="fa-solid fa-desktop"></i></a>
                 <a href="#" class="hidden flex w-75px h-50px flexCenter c-black60 toggle-menuFolder" onclick="toggleElement('toggle-menuFolder')"><i class="fa-solid fa-folder"></i></a>
                 <a href="#" class="w-75px h-50px flexCenter toggle-menuFolder" onclick="toggleElement('toggle-menuFolder')"><i class="fa-solid fa-folder"></i></a>
+                <a href="#" class="hidden flex w-75px h-50px flexCenter c-black60 toggle-menuCode" onclick="toggleElement('toggle-menuCode')"><i class="fa-solid fa-file-code"></i></a>
+                <a href="#" class="w-75px h-50px flexCenter toggle-menuCode" onclick="toggleElement('toggle-menuCode')"><i class="fa-solid fa-file-code"></i></a>
                 <a href="#" class="hidden flex w-75px h-50px flexCenter c-black60 toggle-menuEditor" onclick="toggleElement('toggle-menuEditor')"><i class="fa-solid fa-pen-to-square"></i></a>
                 <a href="#" class="w-75px h-50px flexCenter toggle-menuEditor" onclick="toggleElement('toggle-menuEditor')"><i class="fa-solid fa-pen-to-square"></i></a>
-                <a href="#" class="hidden flex w-75px h-50px flexCenter c-black60 toggle-menuCode" onclick="toggleElement('toggle-menuCode')"><i class="fa-solid fa-hard-drive"></i></a>
-                <a href="#" class="w-75px h-50px flexCenter toggle-menuCode" onclick="toggleElement('toggle-menuCode')"><i class="fa-solid fa-hard-drive"></i></a>
+                <a href="#" class="hidden flex w-75px h-50px flexCenter c-black60 toggle-menuPreview" onclick="toggleElement('toggle-menuPreview')"><i class="fa-solid fa-desktop"></i></a>
+                <a href="#" class="w-75px h-50px flexCenter toggle-menuPreview" onclick="toggleElement('toggle-menuPreview')"><i class="fa-solid fa-desktop"></i></a>
                 <a href="#" class="flex w-75px h-50px flexCenter c-black60"><i class="fa-solid fa-floppy-disk"></i></a>
                 <a href="#" class="flex w-75px h-50px flexCenter c-black60"><i class="fa-solid fa-gear"></i></a>
             </div>
-            <div class="toggle-menuPreview flexColumn bright-1px-solid-black7 h-100% w-100%">
-                <div class="flexRow flexSpaceBetween p-6px-12px fs-12px g-128px bbottom-1px-solid-black7 bg-black5 w-100%">
-                    <span>Preview</span>
-                    <span onclick="toggleElement('toggle-menuPreview')" class="pointer"><i class="fa-solid fa-xmark"></i></span>
-                </div>
-            </div>
-            <div class="toggle-menuFolder flexColumn bright-1px-solid-black7 h-100% w-100%">
+            <div class="toggle-menuFolder flexColumn bright-1px-solid-black7 h-100% w-400px of-hiden" id="folder-window">
                 <div class="flexRow flexSpaceBetween p-6px-12px fs-12px g-128px bbottom-1px-solid-black7 bg-black5 w-100%">
                     <span>Folder</span>
                     <span onclick="toggleElement('toggle-menuFolder')" class="pointer"><i class="fa-solid fa-xmark"></i></span>
                 </div>
+                <div class="w-100% of-hiden" id="folder-window-inside">
+                    <div class="flexColumn g-4px flexLeft p-16px w-100%">
+                        <component path="file-element.html" name="index" icon="fa-brands fa-html5 c-#f35c20" padding="0"></component>
+                        <component path="config-element.html" name="pixelbite.conf" padding="0"></component>
+                        <!-- <component path="folder-element.html" hidegroup="components" name="components" padding="0"></component>
+                        <component path="file-element.html" group="components" name="component1" padding="22"></component>
+                        <component path="file-element.html" group="components" name="component2" padding="22"></component>
+                        <component path="file-element.html" group="components" name="component3" padding="22"></component>
+                        <component path="file-element.html" group="components" name="component4" padding="22"></component> -->
+                    </div>
+                </div>
             </div>
-            <div class="toggle-menuEditor flexColumn bright-1px-solid-black7 h-100% w-100%">
+            <div class="toggle-menuCode flexColumn bright-1px-solid-black7 h-100% w-100% of-hiden" id="code-window">
+                <div class="flexRow flexSpaceBetween p-6px-12px fs-12px g-128px bbottom-1px-solid-black7 bg-black5 w-100%">
+                    <span><span id="code-editor-file">index.html</span> - Code Editor</span>
+                    <span onclick="toggleElement('toggle-menuCode')" class="pointer"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+                <div class="w-100% of-hiden pos-relative" id="code-window-inside">
+                    <div class="custom-editor">
+                        <div class="custom-lines" id="custom-lines">
+                            <span></span>
+                        </div>
+                        <textarea class="custom-textarea" id="code-textarea">&lt;div class='p-12px'&gt;
+    &lt;h1&gt;Welcome to PixelbiteCSS&lt;/h1&gt;
+    &lt;p class=loremIpsum-4&gt;&lt;/p&gt;
+    &lt;button&gt;Button&lt;/button&gt;
+&lt;/div&gt;</textarea>
+                    </div>
+                    <button class="br-0 w-100% p-14px pos-absolute bottom-_50px left-0" id="updateButton">Update preview</button>
+                </div>
+            </div>
+            <div class="toggle-menuEditor flexColumn bright-1px-solid-black7 h-100% w-100% of-hiden" id="editor-window">
                 <div class="flexRow flexSpaceBetween p-6px-12px fs-12px g-128px bbottom-1px-solid-black7 bg-black5 w-100%">
                     <span>Editor</span>
                     <span onclick="toggleElement('toggle-menuEditor')" class="pointer"><i class="fa-solid fa-xmark"></i></span>
                 </div>
+                <div class="w-100% of-hiden" id="editor-window-inside">
+                    <div class="w-100% h-100% p-24px">
+                        <div class="w-100% h-100% b-5px-dashed-cherry15 br-20px ta-center p-64px-32px flexColumn g-32px">
+                            <i class="fa-solid fa-wrench fs-128px c-cherry15"></i>
+                            <div class="c-cherry15 fs-32px fw-600">Under construction</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="toggle-menuCode flexColumn bright-1px-solid-black7 h-100% w-100%">
+            <div class="toggle-menuPreview flexColumn bright-1px-solid-black7 h-100% w-100% of-hiden" id="preview-window">
                 <div class="flexRow flexSpaceBetween p-6px-12px fs-12px g-128px bbottom-1px-solid-black7 bg-black5 w-100%">
-                    <span>Code Editor</span>
-                    <span onclick="toggleElement('toggle-menuCode')" class="pointer"><i class="fa-solid fa-xmark"></i></span>
+                    <span><span id="preview-file">index.html</span> - Preview</span>
+                    <span onclick="toggleElement('toggle-menuPreview')" class="pointer"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+                <div class="w-100% of-hiden">
+                    <div class="w-100% bg-white c-black minH-100%" id="preview-window-inside">
+                        <div class='p-12px'>
+                            <h1>Welcome to PixelbiteCSS</h1>
+                            <p class=loremIpsum-4></p>
+                            <button>Button</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -90,6 +141,13 @@
     <div class="loader loader-page flexCenter flexMiddle">
         <div class="loader-line"></div>
     </div>
+    <div class="max1080:d-none min1200:d-flex zIndex-20 w-100vw h-100vh flexCenter flexMiddle flexColumn pos-absolute top-0 left-0 ta-center g-22px">
+        <i class="fa-solid fa-circle-xmark c-danger fs-86px"></i>
+        <div class="fw-800 fs-32px p-0-32px">Your device width isn't supported</div>
+        <div class="fw-600 fs-18px p-0-32px o-.8">Please change your device or make the device more wide.</div>
+        <a href="..">Go back to homescreen.</a>
+    </div>
     <script src="../pixelbite.js"></script>
+    <script src="../playground.js"></script>
 </body>
 </html>

@@ -1063,7 +1063,6 @@ const pb_updateDropdowns = () => {
                 dropdownButton.classList.add("pos-relative")
                 dropdownContent.classList.add("pos-absolute")
                 dropdownContent.classList.add("top-100%")
-                dropdownContent.classList.add("mt-4px")
                 dropdownContent.classList.add("maxW-none")
                 dropdownContent.classList.add(dropdownId)
                 dropdownButton.onclick = () => {

@@ -8,10 +8,40 @@
 </head>
 <body class="bg-black3 c-white">
     <div class="w-100% h-100vh">
-        <div class="w-100% p-12px flexRow flexSpaceBetween">
-            <div class="flex flexCenter flexMiddle g-12px pointer fw-600" onclick="href('./')">
-                <img src="./assets/logo.svg" height="16"/>
-                <div>Playground</div>
+        <div class="flexRow flexSpaceBetween flexMiddle flexCenter w-100% p-6px-36px bg-black5 bbottom-1px-solid-black7 pos-absolute top-0 left-0 zIndex-20">
+            <div class="flexRow g-32px">        
+                <div class="flex flexRow g-12px pointer fw-600" onclick="href('./')">
+                    <img src="../assets/logo.svg" height="24"/>
+                </div>
+            </div>
+            <div class="flexRow g-32px">
+                <button onclick="href('https://pixelbite-css.github.io', true)">Visit PixelbiteCSS</button>
+            </div>
+        </div>
+        <div class="h-100vh w-100vw flexCenter flexMiddle ta-left">
+            <div class="w-700px p-32px">
+                <div class="fs-32px fw-600">PixelbiteCSS Playground</div>
+                <div class="fs-20px o-.5">Create and explore stuff</div>
+                <div class="flexRow flexLeft mt-32px">
+                    <div class="w-100%">
+                        <div class="fs-18px">Start</div>
+                        <div class="flexColumn flexTop flexLeft foreach:td-none">
+                            <a href="./new"><i class="fa-regular fa-file"></i> New file</a>
+                            <a href="https://pixelbite-css.github.io/examples" target="_blank"><i class="fa-regular fa-circle-question"></i> Explore examples</a>
+                            <a href="https://pixelbite-css.github.io/docs" target="_blank"><i class="fa-regular fa-circle-question"></i> Explore docs</a>                          
+                        </div>
+                    </div>
+                    <div class="w-100%">
+                        <div class="fs-18px">Templates</div>
+                        <div class="flexColumn flexTop flexLeft foreach:td-none">
+                            <a href="./new">blank.html</a>
+                            <a href="./new">cheatsheet.html</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-22px">
+                    <a href="https://pixelbite-css.github.io">Back to PixelbiteCSS</a>  
+                </div>
             </div>
         </div>
     </div>

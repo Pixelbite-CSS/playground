@@ -1,0 +1,49 @@
+.custom-editor {
+    width: 100%;
+    height: calc(100vh - 140px) !important;
+    overflow-y: scroll;
+    display: inline-flex;
+    padding: 12px;
+}
+
+.custom-lines {
+    width: 20px;
+    text-align: right;
+    font-size: 14px;
+    height: 100%;
+}
+
+.custom-lines span {
+    counter-increment:  linenumber;
+}
+
+.custom-lines span::before {
+    content: counter(linenumber);
+    display: block;
+    font-family: var(--font-mono-family);
+    color: rgba(255, 255, 255, .2);
+}
+
+.custom-textarea {
+    background: transparent;
+    font-size: 14px;
+    outline: none !important;
+    border: none;
+    margin-left: 12px;
+    tab-size: 17px;
+    position: relative;
+    top: -3px;
+    color: #aaa;
+    resize: none;
+    width: 500% !important;
+    height: auto;
+    overflow: hidden;
+    white-space: pre;
+    overflow-wrap: normal;
+    font-family: var(--font-mono-family);
+}
+
+#preview-window-inside {
+    height: calc(100vh - 90px) !important;
+    overflow-y: scroll;
+}
