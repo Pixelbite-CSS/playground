@@ -47,25 +47,101 @@ const getElements = () => {
 }
 
 const generateEditor = () => {
-  let elements = getElements()
-  editorArea.innerHTML = ''
-  for (let i = 3; i < elements.length; i++) {
-    let element = elements[i]
-    let elementId = element.tagName + "[" + (i - 2) + "]"
-    let classes = ''
-    for (let j = 0; j < element.classList.length; j++) {
-      classes += element.classList[j] + " "
-    }
-    editorArea.innerHTML +=   '<div class="w-100% noselect flexRow flexSpaceBetween p-6px-10px fs-12px pointer b-1px-solid-black7 bg-black5" onclick="toggleElement(\'' + elementId + '\')">' +
-                                '<div>' + elementId + '</div>' +
-                                '<i class="fa-solid fa-chevron-down ' + elementId + ' hidden"></i>' +
-                                '<i class="fa-solid fa-chevron-up ' + elementId + '"></i>' +
-                              '</div>' +
-                              '<div class="flexColumn ' + elementId + ' hidden w-100% ta-left flexLeft p-8px-12px">' +
-                                '<div class="flexRow w-100%">' +
-                                  '<input class="w-100%" placeholder="Classes" type="text" value="' + classes + '"></input>' +
-                                '</div>' +
-                              '</div>'
-  }
+  // let elements = getElements()
+  // editorArea.innerHTML = ''
+  // for (let i = 3; i < elements.length; i++) {
+  //   let element = elements[i]
+  //   let elementId = element.tagName + "[" + (i - 2) + "]"
+  //   let classes = ''
+  //   for (let j = 0; j < element.classList.length; j++) {
+  //     classes += element.classList[j] + " "
+  //   }
+  //   editorArea.innerHTML +=   '<div class="w-100% noselect flexRow flexSpaceBetween p-6px-10px fs-12px pointer b-1px-solid-black7 bg-black5" onclick="toggleElement(\'' + elementId + '\')">' +
+  //                               '<div>' + elementId + '</div>' +
+  //                               '<i class="fa-solid fa-chevron-down ' + elementId + ' hidden"></i>' +
+  //                               '<i class="fa-solid fa-chevron-up ' + elementId + '"></i>' +
+  //                             '</div>' +
+  //                             '<div class="flexColumn ' + elementId + ' hidden w-100% ta-left flexLeft p-8px-12px">' +
+  //                               '<div class="flexRow w-100%">' +
+  //                                 '<input class="w-100%" placeholder="Classes" type="text" value="' + classes + '"></input>' +
+  //                               '</div>' +
+  //                             '</div>'
+  // }
+  const treeObject = htmlToTree();
   pb_classGenerator()
+  // console.log(JSON.stringify(treeObject, null, 2));
+  treeChild(treeObject, treeObject.children)
+}
+
+const generateBlock = (object, parents) => {
+  let elementId = object.tag + "_" + pb_randomString(24)
+  let contentEdit = ''
+  if (object.tag === "textContent") {
+    contentEdit = '<div class="fs-12px">Value</div><input class="w-100% inputs" placeholder="Value" type="text" value="' + object.value + '"></input>'
+  } else {
+    contentEdit = '<div class="fs-12px">Class list</div>' +
+    '<input class="w-100% inputs" placeholder="Classes" type="text" value="' + object.classList + '"></input>' +
+    '<div class="fs-12px">Value</div>' +
+    '<input class="w-100% inputs" placeholder="Value" type="text" value="' + object.value + '"></input>' +
+    '<div class="fs-12px">Type</div>' +
+    '<input class="w-100% inputs" placeholder="Type" type="text" value="' + object.type + '"></input>' +
+    '<div class="fs-12px">Onclick action</div>' +
+    '<input class="w-100% inputs" placeholder="Onclick" type="text" value="' + object.onclick + '"></input>'
+  }
+  editorArea.innerHTML +=   '<div class="w-100% noselect flexRow flexSpaceBetween p-6px-10px fs-12px pointer b-1px-solid-black7 bg-black5" onclick="toggleElement(\'' + elementId + '\')">' +
+                              '<div class="ff-fontMonospace fs-10px o-.7">' + parents + object.tag + '</div>' +
+                              '<i class="fa-solid fa-chevron-down ' + elementId + ' hidden"></i>' +
+                              '<i class="fa-solid fa-chevron-up ' + elementId + '"></i>' +
+                            '</div>' +
+                            '<div class="flexColumn ' + elementId + ' hidden w-100% ta-left flexLeft p-8px-12px">' +
+                              '<div class="flexColumn flexLeft g-4px w-100%">' +
+                                contentEdit
+                              '</div>' +
+                            '</div>'
+}
+
+const treeChild = async (object, children, parents) => {
+  if (children) {
+    if (!parents) {
+      parents = ""
+    }    
+    for (let i = 0; i < children.length; i++) {
+      let newParents = parents + object.tag + " > " + "[" + i + "]"
+      generateBlock(children[i], newParents)
+      await treeChild(children[i], children[i].children, newParents)
+    }
+  }
+}
+
+const htmlToTree = () => {
+  editorArea.innerHTML = ''
+  let code = codeTextarea.value;
+  let parser = new DOMParser();
+  let doc = parser.parseFromString(code, "text/html");
+
+  function buildTree(node) {
+    const treeObject = {
+      tag: node.tagName ? node.tagName.toLowerCase() : undefined,
+      classList: node.classList ? Array.from(node.classList) : [],
+      value: node.value ? node.value : [],
+      onclick: node.onclick ? node.onclick : [],
+      type: node.type ? node.type : [],
+      children: []
+    };
+
+    for (const childNode of node.childNodes) {
+      if (childNode.nodeType === Node.ELEMENT_NODE) {
+        treeObject.children.push(buildTree(childNode));
+      } else if (childNode.nodeType === Node.TEXT_NODE && childNode.textContent.trim() !== '') {
+        treeObject.children.push({
+          tag: 'textContent',
+          value: childNode.textContent.trim()
+        });
+      }
+    }
+
+    return treeObject;
+  }
+
+  return buildTree(doc.body);
 }
